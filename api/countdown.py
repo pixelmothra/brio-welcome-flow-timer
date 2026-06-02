@@ -81,9 +81,12 @@ class handler(BaseHTTPRequestHandler):
 
                 # Draw colon between tiles
                 if idx < 2:
-                    cy = tile_y + tile_h / 2
-                    draw.ellipse([x, cy - 14, x + 8, cy - 6], fill=(30, 30, 30))
-                    draw.ellipse([x, cy + 6, x + 8, cy + 14], fill=(30, 30, 30))
+                    cbbox = draw.textbbox((0, 0), ":", font=font_digit)
+                    cw = cbbox[2] - cbbox[0]
+                    ch = cbbox[3] - cbbox[1]
+                    cx = x + (colon_w - cw) / 2
+                    cy = tile_y + (tile_h - ch) / 2 - cbbox[1]
+                    draw.text((cx, cy), ":", fill=(30, 30, 30), font=font_digit)
                     x += colon_w + gap
 
             frames.append(img)
