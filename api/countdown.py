@@ -26,7 +26,7 @@ class handler(BaseHTTPRequestHandler):
     def do_GET(self):
         total_seconds = HOURS * 3600
 
-        font_path = os.path.join(os.path.dirname(__file__), '..', 'DMSans-VariableFont_opsz,wght.ttf')
+        font_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'DMSans-VariableFont_opsz,wght.ttf')
         try:
             font_digit = ImageFont.truetype(font_path, size=36)
             font_digit.set_variation_by_axes([36, 700])
